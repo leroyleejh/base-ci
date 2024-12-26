@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: npm
+        cache-dependency-path: ${{ inputs.package-path }}
     - name: install npm dependencies
       run: cd ${{ inputs.package-path }} && NODE_ENV=build && npm ci
     - name: run test
