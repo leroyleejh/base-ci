@@ -1,4 +1,4 @@
-name: deafault pipeline
+name: default pipeline
 
 on:
   #allows workflow to be triggered manually
@@ -20,11 +20,11 @@ jobs:
   build_dev_call_from_local_repo:
     uses: ./.github/workflows/node-build.yml
     with:
-      package-path: $PACKAGE_PATH
-      node-version: $NODE_VERSION
+      package-path: "$PACKAGE_PATH"
+      node-version: "$NODE_VERSION"
 
   build_dev_call_from_another_repo:
     uses: leroyleejh/base-ci/.github/workflows/node-build.yml@main
     with:
-      package-path: $PACKAGE_PATH
-      node-version: $NODE_VERSION
+      package-path: "$PACKAGE_PATH"
+      node-version: "$NODE_VERSION"
