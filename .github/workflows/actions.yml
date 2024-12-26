@@ -1,0 +1,24 @@
+name: node-build
+
+on:
+  #allows workflow to be triggered manually
+  workflow_call:
+
+  #runs on all push requests
+  push:
+  pull_request:
+    branches:
+      - main
+      - master
+
+env:
+  #sets the default node version for the workflow
+  project-path: 'typescript/'
+  node-version: '22.x'
+
+jobs:
+  build_dev:
+    uses: ./.github/actions/node-build
+    with:
+      project-path: ${{ env.project-path }}
+      node-version: ${{ env.node-version }}
