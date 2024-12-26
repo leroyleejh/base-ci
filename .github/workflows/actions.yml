@@ -17,8 +17,14 @@ env:
   node-version: '22.x'
 
 jobs:
-  build_dev:
-    uses: ./.github/actions/node-build
+  build_dev_call_from_local_repo:
+    uses: ./.github/workflows/node-build.yml@main
+    with:
+      package-path: ${{ env.package-path }}
+      node-version: ${{ env.node-version }}
+
+  build_dev_call_from_another_repo:
+    uses: leroyleejh/base-ci/.github/workflows/node-build.yml@main
     with:
       package-path: ${{ env.package-path }}
       node-version: ${{ env.node-version }}
