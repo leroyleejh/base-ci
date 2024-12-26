@@ -36,5 +36,5 @@ jobs:
     needs: prepare_variables
     uses: leroyleejh/base-ci/.github/workflows/node-build.yml@main
     with:
-      package-path: "$PACKAGE_PATH"
-      node-version: "$NODE_VERSION"
+      package-path: ${{ needs.prepare_variables.outputs.package-path }}
+      node-version: ${{ needs.prepare_variables.outputs.node-version }}
