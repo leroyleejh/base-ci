@@ -13,18 +13,18 @@ on:
 
 env:
   #sets the default node version for the workflow
-  package-path: 'typescript/'
-  node-version: '22.x'
+  PACKAGE_PATH: 'typescript/'
+  NODE_VERSION: '22.x'
 
 jobs:
   build_dev_call_from_local_repo:
     uses: ./.github/workflows/node-build.yml
     with:
-      package-path: ${{ env.package-path }}
-      node-version: ${{ env.node-version }}
+      package-path: $PACKAGE_PATH
+      node-version: $NODE_VERSION
 
   build_dev_call_from_another_repo:
     uses: leroyleejh/base-ci/.github/workflows/node-build.yml@main
     with:
-      package-path: ${{ env.package-path }}
-      node-version: ${{ env.node-version }}
+      package-path: $PACKAGE_PATH
+      node-version: $NODE_VERSION
