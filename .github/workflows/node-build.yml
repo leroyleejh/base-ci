@@ -3,7 +3,7 @@ name: node-build
 on:
   workflow_call:
     inputs:
-      project-path:
+      package-path:
         required: true
         type: string
       node-version:
@@ -16,9 +16,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ inputs.node-version }}
-        uses: actions/setup-node@v4
+      uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
           cache: npm
     - name: install npm dependencies
-      run: cd ${{ inputs.project-path }} && NODE_ENV=build && npm ci
+      run: cd ${{ inputs.package-path }} && NODE_ENV=build && npm ci
