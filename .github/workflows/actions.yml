@@ -22,6 +22,8 @@ jobs:
     outputs:
       package-path: ${{ env.PACKAGE_PATH }}
       node-version: ${{ env.NODE_VERSION }}
+    steps:
+      - run: echo "Preparing env vars via outputs"
 
   build_dev_call_from_local_repo:
     needs: prepare_variables
