@@ -29,8 +29,8 @@ jobs:
     needs: prepare_variables
     uses: ./.github/workflows/node-build.yml
     with:
-      package-path: "$PACKAGE_PATH"
-      node-version: "$NODE_VERSION"
+      package-path: ${{ needs.prepare_variables.outputs.package-path }}
+      node-version: ${{ needs.prepare_variables.outputs.node-version }}
 
   build_dev_call_from_another_repo:
     needs: prepare_variables
