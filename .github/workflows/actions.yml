@@ -18,7 +18,7 @@ env:
 
 jobs:
   build_dev_call_from_local_repo:
-    uses: ./.github/workflows/node-build.yml@main
+    uses: ./.github/workflows/node-build.yml
     with:
       package-path: ${{ env.package-path }}
       node-version: ${{ env.node-version }}
