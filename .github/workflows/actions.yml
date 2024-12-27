@@ -15,6 +15,7 @@ env:
   #sets the default node version for the workflow
   PACKAGE_PATH: 'typescript/'
   NODE_VERSION: '22.x'
+  TEST_COMMAND: 'npm run test'
 
 jobs:
   prepare_variables:
@@ -22,6 +23,7 @@ jobs:
     outputs:
       package-path: ${{ env.PACKAGE_PATH }}
       node-version: ${{ env.NODE_VERSION }}
+      test-command: ${{ env.TEST_COMMAND }}
     steps:
       - run: echo "Preparing env vars via outputs"
 
@@ -45,6 +47,7 @@ jobs:
     with:
       package-path: ${{ needs.prepare_variables.outputs.package-path }}
       node-version: ${{ needs.prepare_variables.outputs.node-version }}
+      test-command: ${{ needs.prepare_variables.outputs.test-command }}
 
   build_and_test_dev_from_another_repo:
     needs: prepare_variables
@@ -52,3 +55,4 @@ jobs:
     with:
       package-path: ${{ needs.prepare_variables.outputs.package-path }}
       node-version: ${{ needs.prepare_variables.outputs.node-version }}
+      test-command: ${{ needs.prepare_variables.outputs.test-command }}
