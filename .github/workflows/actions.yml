@@ -38,3 +38,17 @@ jobs:
     with:
       package-path: ${{ needs.prepare_variables.outputs.package-path }}
       node-version: ${{ needs.prepare_variables.outputs.node-version }}
+
+  build_and_test_dev_from_local_repo:
+    needs: prepare_variables
+    uses: ./.github/workflows/node-test.yml
+    with:
+      package-path: ${{ needs.prepare_variables.outputs.package-path }}
+      node-version: ${{ needs.prepare_variables.outputs.node-version }}
+
+  build_and_test_dev_from_another_repo:
+    needs: prepare_variables
+    uses: leroyleejh/base-ci/.github/workflows/node-test.yml@main
+    with:
+      package-path: ${{ needs.prepare_variables.outputs.package-path }}
+      node-version: ${{ needs.prepare_variables.outputs.node-version }}
