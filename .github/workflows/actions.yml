@@ -42,7 +42,7 @@ jobs:
       node-version: ${{ needs.prepare_variables.outputs.node-version }}
 
   build_and_test_dev_from_local_repo:
-    needs: prepare_variables, build_dev_call_from_local_repo
+    needs: [prepare_variables, build_dev_call_from_local_repo]
     uses: ./.github/workflows/node-test.yml
     with:
       package-path: ${{ needs.prepare_variables.outputs.package-path }}
@@ -50,7 +50,7 @@ jobs:
       test-command: ${{ needs.prepare_variables.outputs.test-command }}
 
   build_and_test_dev_from_another_repo:
-    needs: prepare_variables, build_dev_call_from_another_repo
+    needs: [prepare_variables, build_dev_call_from_another_repo]
     uses: leroyleejh/base-ci/.github/workflows/node-test.yml@main
     with:
       package-path: ${{ needs.prepare_variables.outputs.package-path }}
